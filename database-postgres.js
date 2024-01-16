@@ -6,9 +6,9 @@ export class DatabasePostgres {
         let videos
 
         if (search) {
-            videos = await sql `select * from videos where title ilike ${'%' + search + '%'}`
+            videos = await sql`select * from videos where title ilike ${'%' + search + '%'}`
         } else {
-            videos = await sql `select * from videos`
+            videos = await sql`select * from videos`
         }
 
         return videos
@@ -18,7 +18,7 @@ export class DatabasePostgres {
         const videoId = randomUUID()
         const { title, description, duration } = video
 
-        await sql `insert into videos (id, title, description, duration) VALUES (${videoId}, ${title}, ${description}, ${duration})`
+        await sql`insert into videos (id, title, description, duration) VALUES (${videoId}, ${title}, ${description}, ${duration})`
     }
 
     async update(id, video) {
@@ -28,7 +28,7 @@ export class DatabasePostgres {
     }
 
     async delete(id) {
-        await sql`dalete from videos where id = ${id}`
+        await sql`delete from videos where id = ${id}`
     }
 
 }
